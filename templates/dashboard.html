@@ -47,20 +47,27 @@
         }
 
         .main-content {
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .section {
-            margin: 2rem 0;
-            padding: 1rem;
+            margin: 1rem 0;
+            padding: 0.5rem;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        canvas {
-            margin: 2rem auto;
-            display: block;
+        .chart-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .chart {
+            flex: 1 1 45%;
+            min-width: 200px;
             max-width: 100%;
         }
 
@@ -69,9 +76,32 @@
             padding: 1rem;
             background-color: #008000;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            min-width: 100px;
+        }
+
+        .chart-legend div {
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .chart {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
@@ -91,14 +121,30 @@
     <main class="main-content">
         <section id="dashboard" class="section">
             <h2>Centralized Dashboard</h2>
-            <p>Active Subscriptions Breakdown:</p>
-            <canvas id="subscriptionsPieChart" width="400" height="200"></canvas>
+            <div class="chart-container">
+                <div class="chart">
+                    <canvas id="subscriptionsPieChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div><span class="legend-color" style="background-color: rgba(0, 128, 0, 0.7);"></span>Netflix</div>
+                    <div><span class="legend-color" style="background-color: rgba(34, 139, 34, 0.7);"></span>Spotify</div>
+                    <div><span class="legend-color" style="background-color: rgba(50, 205, 50, 0.7);"></span>Gym Membership</div>
+                </div>
+            </div>
         </section>
 
         <section id="insights" class="section">
             <h2>AI Usage Insights</h2>
-            <p>Track and analyze your subscription usage.</p>
-            <canvas id="usageBarChart" width="400" height="200"></canvas>
+            <div class="chart-container">
+                <div class="chart">
+                    <canvas id="usageBarChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div><span class="legend-color" style="background-color: rgba(0, 128, 0, 0.7);"></span>Netflix Hours</div>
+                    <div><span class="legend-color" style="background-color: rgba(34, 139, 34, 0.7);"></span>Spotify Hours</div>
+                    <div><span class="legend-color" style="background-color: rgba(50, 205, 50, 0.7);"></span>Gym Visits</div>
+                </div>
+            </div>
         </section>
 
         <section id="budget" class="section">
@@ -125,6 +171,7 @@
     </footer>
 
     <script>
+        // Pie Chart for Active Subscriptions
         const subscriptionsCtx = document.getElementById('subscriptionsPieChart').getContext('2d');
         new Chart(subscriptionsCtx, {
             type: 'pie',
@@ -141,14 +188,16 @@
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: true
+                        display: false
                     }
                 }
             }
         });
 
+        // Bar Chart for AI Usage Insights
         const usageCtx = document.getElementById('usageBarChart').getContext('2d');
         new Chart(usageCtx, {
             type: 'bar',
@@ -164,9 +213,10 @@
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: true
+                        display: false
                     }
                 }
             }
