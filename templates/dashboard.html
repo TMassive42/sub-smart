@@ -4,69 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Subscription Manager</title>
-    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        .header {
+            background-color: #008000;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            margin: 2rem auto;
+            display: block;
+            max-width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #008000;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <h1>Smart Subscription Manager</h1>
         <nav>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#insights">Insights</a></li>
-                <li><a href="#budgeting">Budgeting</a></li>
+                <li><a href="#budget">Budget</a></li>
                 <li><a href="#recommendations">Recommendations</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="main-content">
         <section id="dashboard" class="section">
             <h2>Centralized Dashboard</h2>
-            <div class="card">
-                <h3>Linked Accounts</h3>
-                <p>Bank Accounts: 2</p>
-                <p>Mobile Wallets: 1</p>
-            </div>
-            <div class="card">
-                <h3>Active Subscriptions</h3>
-                <ul>
-                    <li>Netflix - ksh 700</li>
-                    <li>Spotify - ksh 300</li>
-                    <li>Gym Membership - ksh 7000</li>
-                </ul>
-            </div>
+            <p>Active Subscriptions Breakdown:</p>
+            <canvas id="subscriptionsPieChart" width="400" height="200"></canvas>
         </section>
 
         <section id="insights" class="section">
             <h2>AI Usage Insights</h2>
-            <p>Last Month:</p>
-            <ul>
-                <li>Netflix: 12 hours watched</li>
-                <li>Spotify: 3 hours listened</li>
-                <li>Gym: 1 visit</li>
-            </ul>
-            <p>Suggested Actions:</p>
-            <ul>
-                <li>Consider downgrading Netflix plan.</li>
-                <li>Cancel Gym Membership.</li>
-            </ul>
+            <p>Track and analyze your subscription usage.</p>
+            <canvas id="usageBarChart" width="400" height="200"></canvas>
         </section>
 
-        <section id="budgeting" class="section">
+        <section id="budget" class="section">
             <h2>Automated Budgeting</h2>
-            <p>Current Monthly Limit: 15000</p>
-            <p>Remaining: $44.02</p>
+            <p>Set spending limits based on your income and goals.</p>
+            <div class="card">
+                <h3>Spending Limit</h3>
+                <p id="spending-limit">$150</p>
+            </div>
         </section>
 
         <section id="recommendations" class="section">
             <h2>Subscription Switching Recommendations</h2>
-            <p>Recommended Alternative to Netflix: Hulu - ksh 500</p>
-            <button>Switch Now</button>
+            <p>Find better or cheaper alternatives for your subscriptions.</p>
+            <div class="card">
+                <h3>Recommended Service</h3>
+                <p id="recommended-service">Switch to XYZ Streaming for $5 less</p>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2024 Smart Subscription Manager. All Rights Reserved.</p>
+        <p>&copy; 2024 Smart Subscription Manager</p>
     </footer>
+
+    <script>
+        const subscriptionsCtx = document.getElementById('subscriptionsPieChart').getContext('2d');
+        new Chart(subscriptionsCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Netflix', 'Spotify', 'Gym Membership'],
+                datasets: [{
+                    data: [40, 30, 30],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)',
+                        'rgba(50, 205, 50, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+
+        const usageCtx = document.getElementById('usageBarChart').getContext('2d');
+        new Chart(usageCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Netflix Hours', 'Spotify Hours', 'Gym Visits'],
+                datasets: [{
+                    label: 'Usage Stats',
+                    data: [12, 5, 2],
+                    backgroundColor: 'rgba(0, 128, 0, 0.7)',
+                    borderColor: 'rgba(0, 128, 0, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
