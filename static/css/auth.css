@@ -1,19 +1,10 @@
 :root {
-    --primary-color: #4158D0;
-    --secondary-color: #C850C0;
-    --accent-color: #FFCC70;
-    --bg-color: #0a0b1e;
-    --text-color: #ffffff;
-    --card-bg: #1a1b3a;
+    --primary-color: #404040;
+    --text-color: #A7A7A7;
     --border-radius: 16px;
-    --text-muted: #a0a0c0;
-}
+    --button-color: #C2E96A
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+
 }
 
 body {
@@ -22,7 +13,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: linear-gradient(45deg, var(--bg-color), #4f519e);
+    background:white;
     background-attachment: fixed;
     color: var(--text-color);
 }
@@ -31,7 +22,7 @@ body {
     position: relative;
     max-width: 700px;
     width: 100%;
-    background: var(--card-bg);
+    background: var(--bg-color);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -44,12 +35,12 @@ body {
 
 .container header h1 {
     font-size: 2rem;
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
 .container header p {
-    color: var(--text-muted);
+    color: var(--primary-color);
 }
 
 .form .input-box {
@@ -59,14 +50,13 @@ body {
 .input-box label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 
 .input-box input {
     width: 100%;
     padding: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+ 
     border-radius: var(--border-radius);
     color: var(--text-color);
     font-size: 1rem;
@@ -83,42 +73,11 @@ body {
     margin-top: 0.25rem;
 }
 
-.social-login {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 50%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: var(--border-radius);
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-color);
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.social-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.social-btn img {
-    width: 24px;
-    height: 24px;
-}
-
 .form .btn {
     width: 100%;
     padding: 0.75rem;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: var(--text-color);
+    background: var(--button-color);
+    color: var(--primary-color);
     border: none;
     border-radius: var(--border-radius);
     font-size: 1rem;
@@ -134,11 +93,10 @@ body {
 .register-link {
     margin-top: 1.5rem;
     text-align: center;
-    color: var(--text-muted);
 }
 
 .register-link a {
-    color: var(--accent-color);
+    color: blue;
     text-decoration: none;
     font-weight: 500;
 }
@@ -152,7 +110,5 @@ body {
         padding: 1.5rem;
     }
     
-    .social-login {
-        flex-direction: column;
-    }
+  
 }
