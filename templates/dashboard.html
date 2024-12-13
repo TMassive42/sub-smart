@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Subscription Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        .header {
+            background-color: #008000;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            padding: 1rem;
+        }
+
+        .section-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .section {
+            flex: 1 1 48%;
+            min-width: 300px;
+            padding: 0.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+        }
+
+        .chart {
+            width: 100%;
+            height: 200px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #008000;
+            color: #fff;
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .chart-legend div {
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* Specific styles for the Subscriptions Management section */
+        .subscriptions-links {
+            margin-top: 0; /* Remove space between title and links */
+        }
+
+        .subscriptions-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Remove margin between the list and the title */
+        }
+
+        .subscriptions-links li {
+            margin: 0; /* Remove space between each link */
+        }
+
+        .subscriptions-links a {
+            color: #008000;
+            font-weight: bold;
+            text-decoration: none;
+            display: block; /* Makes the links appear in a vertical stack */
+            margin-bottom: 5px; /* Add a small space between links */
+        }
+
+        .subscriptions-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Sub-smart</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#insights">Insights</a></li>
+                <li><a href="#budget">Budget</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="section-container">
+            <section id="dashboard" class="section">
+                <h2>Centralized Dashboard</h2>
+                <div class="chart-container">
+                    <div class="chart">
+                        <canvas id="subscriptionsPieChart"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <h3>Key</h3>
+                        <div><span class="legend-color" style="background-color: rgba(0, 128, 0, 0.7);"></span>Netflix</div>
+                        <div><span class="legend-color" style="background-color: rgba(34, 139, 34, 0.7);"></span>Spotify</div>
+                        <div><span class="legend-color" style="background-color: rgba(50, 205, 50, 0.7);"></span>Gym Membership</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="insights" class="section">
+                <h2>AI Usage Insights</h2>
+                <div class="chart">
+                    <canvas id="usageBarChart"></canvas>
+                </div>
+            </section>
+
+            <section id="budget" class="section">
+                <h2>Automated Budgeting</h2>
+                <div class="chart">
+                    <canvas id="budgetBarChart"></canvas>
+                </div>
+            </section>
+
+            <section id="recommendations" class="section">
+                <h2>Subscriptions Management</h2>
+                <div class="subscriptions-links">
+                    <ul>
+                        <li><a href="#switching-recommendations">Recommendations</a></li>
+                        <li><a href="#cancellations">Cancellations</a></li>
+                        <li><a href="#renewals">Renewals</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Subscription Manager</p>
+    </footer>
+
+    <script>
+        // Pie Chart for Active Subscriptions
+        const subscriptionsCtx = document.getElementById('subscriptionsPieChart').getContext('2d');
+        new Chart(subscriptionsCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Netflix', 'Spotify', 'Gym Membership'],
+                datasets: [{
+                    data: [40, 30, 30],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)',
+                        'rgba(50, 205, 50, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Bar Chart for AI Usage Insights
+        const usageCtx = document.getElementById('usageBarChart').getContext('2d');
+        new Chart(usageCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Netflix Hours', 'Spotify Hours', 'Gym Visits'],
+                datasets: [{
+                    label: 'Usage Stats',
+                    data: [12, 5, 2],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)',
+                        'rgba(50, 205, 50, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Bar Chart for Automated Budgeting
+        const budgetCtx = document.getElementById('budgetBarChart').getContext('2d');
+        new Chart(budgetCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Limit Set', 'Actual Spent'],
+                datasets: [{
+                    label: 'Budget Overview',
+                    data: [150, 120],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Bar Chart for Recommendations
+        const recommendationsCtx = document.getElementById('recommendationsBarChart').getContext('2d');
+        new Chart(recommendationsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Current Cost', 'Recommended Cost'],
+                datasets: [{
+                    label: 'Cost Comparison',
+                    data: [15, 10],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>
