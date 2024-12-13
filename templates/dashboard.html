@@ -66,7 +66,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            /* justify-content: space-between; */
         }
 
         .chart {
@@ -106,19 +106,27 @@
             }
         }
 
+        /* Specific styles for the Subscriptions Management section */
+        .subscriptions-links {
+            margin-top: 0; /* Remove space between title and links */
+        }
+
         .subscriptions-links ul {
             list-style: none;
             padding: 0;
+            margin: 0; /* Remove margin between the list and the title */
         }
 
         .subscriptions-links li {
-            margin: 10px 0;
+            margin: 0; /* Remove space between each link */
         }
 
         .subscriptions-links a {
             color: #008000;
             font-weight: bold;
             text-decoration: none;
+            display: block; /* Makes the links appear in a vertical stack */
+            margin-bottom: 5px; /* Add a small space between links */
         }
 
         .subscriptions-links a:hover {
@@ -174,7 +182,7 @@
                 <h2>Subscriptions Management</h2>
                 <div class="subscriptions-links">
                     <ul>
-                        <li><a href="#switching-recommendations">Switching Recommendations</a></li>
+                        <li><a href="#switching-recommendations">Recommendations</a></li>
                         <li><a href="#cancellations">Cancellations</a></li>
                         <li><a href="#renewals">Renewals</a></li>
                     </ul>
