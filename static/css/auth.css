@@ -2,8 +2,8 @@
     --primary-color: #404040;
     --text-color: #A7A7A7;
     --border-radius: 16px;
-    --button-color: #C2E96A
-
+    --button-color: #4caf50;
+    --bg-color: #ffffff
 
 }
 
@@ -13,8 +13,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background:white;
-    background-attachment: fixed;
+    background:#002430;
     color: var(--text-color);
 }
 
