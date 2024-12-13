@@ -64,6 +64,9 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .chart {
@@ -83,7 +86,6 @@
             flex-direction: column;
             gap: 0.5rem;
             padding: 0.5rem;
-            min-width: 100px;
         }
 
         .chart-legend div {
@@ -107,7 +109,7 @@
 </head>
 <body>
     <header class="header">
-        <h1>Smart Subscription Manager</h1>
+        <h1>Sub-smart</h1>
         <nav>
             <ul class="nav-links">
                 <li><a href="#dashboard">Dashboard</a></li>
@@ -122,8 +124,16 @@
         <div class="section-container">
             <section id="dashboard" class="section">
                 <h2>Centralized Dashboard</h2>
-                <div class="chart">
-                    <canvas id="subscriptionsPieChart"></canvas>
+                <div class="chart-container">
+                    <div class="chart">
+                        <canvas id="subscriptionsPieChart"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <h3>Key</h3>
+                        <div><span class="legend-color" style="background-color: rgba(0, 128, 0, 0.7);"></span>Netflix</div>
+                        <div><span class="legend-color" style="background-color: rgba(34, 139, 34, 0.7);"></span>Spotify</div>
+                        <div><span class="legend-color" style="background-color: rgba(50, 205, 50, 0.7);"></span>Gym Membership</div>
+                    </div>
                 </div>
             </section>
 
@@ -133,25 +143,21 @@
                     <canvas id="usageBarChart"></canvas>
                 </div>
             </section>
+
+            <section id="budget" class="section">
+                <h2>Automated Budgeting</h2>
+                <div class="chart">
+                    <canvas id="budgetBarChart"></canvas>
+                </div>
+            </section>
+
+            <section id="recommendations" class="section">
+                <h2>Subscriptions Management</h2>
+                <div class="chart">
+                    <canvas id="recommendationsBarChart"></canvas>
+                </div>
+            </section>
         </div>
-
-        <section id="budget" class="section">
-            <h2>Automated Budgeting</h2>
-            <p>Set spending limits based on your income and goals.</p>
-            <div class="card">
-                <h3>Spending Limit</h3>
-                <p id="spending-limit">$150</p>
-            </div>
-        </section>
-
-        <section id="recommendations" class="section">
-            <h2>Subscription Switching Recommendations</h2>
-            <p>Find better or cheaper alternatives for your subscriptions.</p>
-            <div class="card">
-                <h3>Recommended Service</h3>
-                <p id="recommended-service">Switch to XYZ Streaming for $5 less</p>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
@@ -176,12 +182,7 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
+                maintainAspectRatio: false
             }
         });
 
@@ -198,20 +199,54 @@
                         'rgba(0, 128, 0, 0.7)',
                         'rgba(34, 139, 34, 0.7)',
                         'rgba(50, 205, 50, 0.7)'
-                    ],
-                    borderColor: 'rgba(0, 128, 0, 1)',
-                    borderWidth: 1
+                    ]
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top'
-                    }
-                }
+                maintainAspectRatio: false
+            }
+        });
+
+        // Bar Chart for Automated Budgeting
+        const budgetCtx = document.getElementById('budgetBarChart').getContext('2d');
+        new Chart(budgetCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Limit Set', 'Actual Spent'],
+                datasets: [{
+                    label: 'Budget Overview',
+                    data: [150, 120],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Bar Chart for Recommendations
+        const recommendationsCtx = document.getElementById('recommendationsBarChart').getContext('2d');
+        new Chart(recommendationsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Current Cost', 'Recommended Cost'],
+                datasets: [{
+                    label: 'Cost Comparison',
+                    data: [15, 10],
+                    backgroundColor: [
+                        'rgba(0, 128, 0, 0.7)',
+                        'rgba(34, 139, 34, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
             }
         });
     </script>
