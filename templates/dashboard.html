@@ -105,6 +105,25 @@
                 flex: 1 1 100%;
             }
         }
+
+        .subscriptions-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .subscriptions-links li {
+            margin: 10px 0;
+        }
+
+        .subscriptions-links a {
+            color: #008000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .subscriptions-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -153,8 +172,12 @@
 
             <section id="recommendations" class="section">
                 <h2>Subscriptions Management</h2>
-                <div class="chart">
-                    <canvas id="recommendationsBarChart"></canvas>
+                <div class="subscriptions-links">
+                    <ul>
+                        <li><a href="#switching-recommendations">Switching Recommendations</a></li>
+                        <li><a href="#cancellations">Cancellations</a></li>
+                        <li><a href="#renewals">Renewals</a></li>
+                    </ul>
                 </div>
             </section>
         </div>
