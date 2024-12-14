@@ -34,6 +34,7 @@ func (app *App) Routes() http.Handler {
 	r.HandleFunc("/about", app.HandleAboutGet).Methods("GET")
 	r.HandleFunc("/dashboard", app.HandleDashboard).Methods("GET")
 
+	r.HandleFunc("/logout", app.HandleLogout).Methods("GET")
 
 	return r
 }
