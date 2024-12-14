@@ -41,10 +41,9 @@ Frontend: JavaScript, html and css for an intuitive and responsive user interfac
 Backend: Go
 
 ## How to use.
-```bash
+```sh
 git clone https://github.com/TMassive42/sub-smart.git
 cd sub-smart
-
 go run .
 
 ```
