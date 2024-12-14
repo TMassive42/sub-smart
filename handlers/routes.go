@@ -39,6 +39,7 @@ func (app *App) Routes() http.Handler {
 	r.HandleFunc("/recommendations", app.HandleRecommendations).Methods("GET")
 	r.HandleFunc("/cancellations", app.HandleCancellations).Methods("GET")
 	r.HandleFunc("/renewals", app.HandleRenewals).Methods("GET")
+	r.HandleFunc("/reminders", app.HandleReminders).Methods("GET")
 
 
 
