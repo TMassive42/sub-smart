@@ -45,7 +45,11 @@ body {
 .form .input-box {
     margin-bottom: 1.5rem;
 }
-
+.error-text {
+    color: #ff0000;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
 .input-box label {
     display: block;
     margin-bottom: 0.5rem;

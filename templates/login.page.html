@@ -17,21 +17,18 @@
             <div class="input-box">
                 <label>Email Address</label>
                 {{ range .Errors.email}}
-                <p class="error-text"></p>
+                    <p class="error-text">{{.}}</p>
                 {{end}}
                 <input type="email" name="email" placeholder="Enter your email" required />
             </div>
-
             <div class="input-box">
                 <label>Password</label>
                 {{ range .Errors.password}}
-                <p class="error-text"></p>
+                    <p class="error-text">{{.}}</p>
                 {{end}}
                 <input type="password" name="password" placeholder="Enter your password" required />
             </div>
-
             <button type="submit" class="btn">Login</button>
-            
             <div class="register-link">
                 <p>Don't have an account? <a href="/register">Register here</a></p>
             </div>

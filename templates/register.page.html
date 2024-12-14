@@ -16,25 +16,30 @@
         <form action="/register" class="form" method="post">
             <div class="input-box">
                 <label>Username</label>
-                <p class="error-text"></p>
+                {{ range .Errors.username }}
+                    <p class="error-text">{{.}}</p>
+                {{ end }}
                 <input type="text" name="username" placeholder="Enter your username" required />
             </div>
-
             <div class="input-box">
                 <label>Email Address</label>
-                <p class="error-text"></p>
+                {{ range .Errors.email }}
+                    <p class="error-text">{{.}}</p>
+                {{ end }}
                 <input type="email" name="email" placeholder="Enter your email" required />
             </div>
-
             <div class="input-box">
                 <label>Password</label>
-                <p class="error-text"></p>
+                {{ range .Errors.password }}
+                    <p class="error-text">{{.}}</p>
+                {{ end }}
                 <input type="password" name="password" placeholder="Enter your password" required />
             </div>
-
             <div class="input-box">
                 <label>Confirm Password</label>
-                <p class="error-text"></p>
+                {{ range .Errors.confirm }}
+                    <p class="error-text">{{.}}</p>
+                {{ end }}
                 <input type="password" name="confirm" placeholder="Confirm your password" required />
             </div>
             <button type="submit" class="btn">Create Account</button>
