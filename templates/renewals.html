@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Renewals</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+        /* Reset the body and html height */
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
         }
 
+        /* Flexbox layout to position the footer */
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        /* Header styling */
         .header {
             background-color: #4caf50;
             color: white;
@@ -19,6 +27,7 @@
             text-align: center;
         }
 
+        /* Back button styling */
         .back-button {
             background-color: #008000;
             color: white;
@@ -32,7 +41,9 @@
             background-color: #4caf50;
         }
 
+        /* Main container takes up remaining space */
         .renewal-container {
+            flex: 1; /* Pushes footer to bottom */
             padding: 20px;
             background-color: white;
             margin: 20px;
@@ -59,6 +70,13 @@
             margin-right: 10px;
         }
 
+        /* Footer sticks to bottom */
+        footer {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +104,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2024 SmartSmart. All Rights Reserved</p>
+    </footer>
 
 </body>
 </html>
