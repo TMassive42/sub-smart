@@ -34,30 +34,32 @@
             <div class="input-box">
                 <label>Username</label>
                 {{ range .Errors.username }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="text" name="username" placeholder="Enter your username" required />
             </div>
             <div class="input-box">
                 <label>Email Address</label>
                 {{ range .Errors.email }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="email" name="email" placeholder="Enter your email" required />
             </div>
-            <div class="input-box">
+            <div class="input-box password-container">
                 <label>Password</label>
                 {{ range .Errors.password }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="password" name="password" placeholder="Enter your password" required />
+                <i style="padding-top: 20px;" class="fas fa-eye password-toggle" data-target="password"></i>
             </div>
-            <div class="input-box">
+            <div class="input-box password-container">
                 <label>Confirm Password</label>
                 {{ range .Errors.confirm }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="password" name="confirm" placeholder="Confirm your password" required />
+                <i style="padding-top: 20px;" class="fas fa-eye password-toggle" data-target="confirm"></i>
             </div>
             <button type="submit" class="btn">Create Account</button>
             <div class="register-link">
