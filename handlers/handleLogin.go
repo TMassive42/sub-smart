@@ -14,7 +14,7 @@ func (app *App) HandleLoginGet(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		valid, validationErr := app.Users.ValidateSession(sessionCookie.Value)
 		if validationErr == nil && valid {
-			http.Redirect(w, r, "/home", http.StatusSeeOther)
+			http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 			return
 		}
 		http.SetCookie(w, &http.Cookie{
@@ -119,5 +119,5 @@ func (app *App) HandleLoginPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.Redirect(w, r, "/home", http.StatusFound)
+	http.Redirect(w, r, "/dashboard", http.StatusFound)
 }
