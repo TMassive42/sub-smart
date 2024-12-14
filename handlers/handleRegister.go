@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"time"
 
@@ -66,6 +67,7 @@ func (app *App) HandleRegisterPost(w http.ResponseWriter, r *http.Request) {
 		tmpl.Execute(w, map[string]interface{}{
 			"Errors": form_errors,
 		})
+		return
 	}
 
 	if exists, _ := app.Users.UserExists(email); exists {
@@ -80,5 +82,6 @@ func (app *App) HandleRegisterPost(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	http.Redirect(w, r, "/login", http.StatusFound)
+	log.Printf("Headers before redirect: %+v", w.Header())
+	http.Redirect(w, r, "/login", http.StatusSeeOther)
 }
