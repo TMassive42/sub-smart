@@ -20,7 +20,7 @@
         }
 
         header {
-            background: linear-gradient(90deg, #4caf50, #388e3c);
+            background: #4caf50;
             padding: 1rem 2rem;
             color: white;
             display: flex;
@@ -29,9 +29,31 @@
         }
 
         header h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             margin: 0;
             font-size: 1.5rem;
         }
+
+        .btn {
+            background-color: #ffffff;
+            color: #4caf50;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4caf50;
+            color: white;
+        }
+
 
         .container {
             flex: 1; /* Ensures the content expands to push the footer down */
@@ -87,7 +109,7 @@
         footer {
             text-align: center;
             padding: 1rem;
-            background: #4caf50;
+            background: #3e2723;
             color: white;
         }
 
@@ -106,7 +128,8 @@
 <body>
     <header>
         <h1>Subscription Reminders</h1>
-        <a href="/" style="color: white; text-decoration: none; font-weight: bold;">Back to Dashboard</a>
+        <a href="/dashboard" class="btn">Back to Dashboard</a>
+
     </header>
 
     <div class="container">
