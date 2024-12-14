@@ -43,6 +43,7 @@ Backend: Go
 ## How to use.
 ```sh
 git clone https://github.com/TMassive42/sub-smart.git
+go mod tidy
 cd sub-smart
 go run .
 
