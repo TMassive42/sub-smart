@@ -52,5 +52,28 @@
             </div>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetName = this.getAttribute('data-target');
+                    const passwordInput = document.querySelector(`input[name="${targetName}"]`);
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        this.classList.remove('fa-eye');
+                        this.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'text';
+                        passwordInput.type = 'password';
+                        this.classList.remove('fa-eye-slash');
+                        this.classList.add('fa-eye');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
