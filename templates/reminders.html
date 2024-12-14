@@ -71,9 +71,19 @@
             border-bottom: none;
         }
 
+        .reminder-details {
+            display: flex;
+            flex-direction: column;
+        }
+
         .reminder-name {
             font-weight: bold;
             color: #333;
+        }
+
+        .reminder-date {
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .reminder-actions {
@@ -117,6 +127,10 @@
                 align-items: flex-start;
                 gap: 0.5rem;
             }
+
+            .reminder-details {
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -133,7 +147,10 @@
             <h2>Upcoming Subscription Actions</h2>
             
             <div class="reminder-item">
-                <span class="reminder-name">Netflix - Renewal</span>
+                <div class="reminder-details">
+                    <span class="reminder-name">Netflix</span>
+                    <span class="reminder-date">Due Date: December 20, 2024</span>
+                </div>
                 <div class="reminder-actions">
                     <button class="btn-cancel">Cancel</button>
                     <button class="btn-pause">Pause</button>
@@ -142,7 +159,10 @@
             </div>
 
             <div class="reminder-item">
-                <span class="reminder-name">Spotify - Renewal</span>
+                <div class="reminder-details">
+                    <span class="reminder-name">Spotify</span>
+                    <span class="reminder-date">Due Date: December 25, 2024</span>
+                </div>
                 <div class="reminder-actions">
                     <button class="btn-cancel">Cancel</button>
                     <button class="btn-pause">Pause</button>
@@ -151,7 +171,10 @@
             </div>
 
             <div class="reminder-item">
-                <span class="reminder-name">Gym Membership - Renewal</span>
+                <div class="reminder-details">
+                    <span class="reminder-name">Gym Membership</span>
+                    <span class="reminder-date">Due Date: January 5, 2025</span>
+                </div>
                 <div class="reminder-actions">
                     <button class="btn-cancel">Cancel</button>
                     <button class="btn-pause">Pause</button>
