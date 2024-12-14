@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscription Recommendations</title>
     <style>
+        /* Reset the body and html height */
+        html, body {
+            height: 100%; 
+            margin: 0;
+        }
+        
+        /* Flexbox setup to push footer to bottom */
         body {
+            display: flex;
+            flex-direction: column;
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 0;
         }
 
         .header {
@@ -33,6 +41,7 @@
         }
 
         .recommendations-container {
+            flex: 1; /* Takes up remaining space */
             padding: 20px;
             background-color: white;
             margin: 20px;
@@ -65,6 +74,13 @@
             text-decoration: underline;
         }
 
+        /* Footer fixed to bottom */
+        footer {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +105,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2024 SmartSmart. All Rights Reserved</p>
+    </footer>
 
 </body>
 </html>
