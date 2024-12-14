@@ -119,5 +119,5 @@ func (app *App) HandleLoginPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.Redirect(w, r, "/dashboard", http.StatusFound)
+	http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 }
