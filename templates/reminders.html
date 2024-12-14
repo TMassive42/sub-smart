@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminders</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4caf50, #388e3c);
+            padding: 1rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            flex: 1; /* Ensures the content expands to push the footer down */
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4caf50;
+        }
+
+        .reminder-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f8e9;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #c8e6c9;
+            border-radius: 5px;
+        }
+
+        .reminder-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .reminder-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reminder-details h3 {
+            margin: 0 0 0.5rem;
+            color: #388e3c;
+        }
+
+        .reminder-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .due-date {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #4caf50;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .reminder-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .reminder-details {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Subscription Reminders</h1>
+        <a href="/" style="color: white; text-decoration: none; font-weight: bold;">Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        <h2>Upcoming Subscription Due Dates</h2>
+        <div class="reminder-card">
+            <div class="reminder-details">
+                <h3>Netflix</h3>
+                <p>Plan: Premium</p>
+                <p class="due-date">Due Date: December 20, 2024</p>
+            </div>
+        </div>
+        <div class="reminder-card">
+            <div class="reminder-details">
+                <h3>Spotify</h3>
+                <p>Plan: Family</p>
+                <p class="due-date">Due Date: December 25, 2024</p>
+            </div>
+        </div>
+        <div class="reminder-card">
+            <div class="reminder-details">
+                <h3>Gym Membership</h3>
+                <p>Plan: Monthly</p>
+                <p class="due-date">Due Date: January 1, 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SubSmart. All Rights Reserved</p>
+    </footer>
+</body>
+</html>
