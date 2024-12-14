@@ -31,5 +31,9 @@ func (app *App) Routes() http.Handler {
 	r.HandleFunc("/login", app.HandleLoginPost).Methods("POST")
 	r.HandleFunc("/login", app.HandleLoginGet).Methods("GET")
 
+	r.HandleFunc("/about", app.HandleAboutGet).Methods("GET")
+	r.HandleFunc("/dashboard", app.HandleDashboard).Methods("GET")
+
+
 	return r
 }
