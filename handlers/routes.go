@@ -36,5 +36,7 @@ func (app *App) Routes() http.Handler {
 
 	r.HandleFunc("/logout", app.HandleLogout).Methods("GET")
 
+	r.HandleFunc("/recommendations", app.HandleRecommendations).Methods("GET")
+
 	return r
 }
