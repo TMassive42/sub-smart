@@ -13,7 +13,7 @@ func (app *App) HandleRegisterGet(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		valid, validationErr := app.Users.ValidateSession(sessionCookie.Value)
 		if validationErr == nil && valid {
-			http.Redirect(w, r, "/home", http.StatusSeeOther)
+			http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 			return
 		}
 		http.SetCookie(w, &http.Cookie{
@@ -68,8 +68,6 @@ func (app *App) HandleRegisterPost(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	/// check if user exists
-
 	if exists, _ := app.Users.UserExists(email); exists {
 		http.Error(w, "User already exists", http.StatusFound)
 		return
@@ -82,6 +80,5 @@ func (app *App) HandleRegisterPost(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
 	http.Redirect(w, r, "/login", http.StatusFound)
 }
