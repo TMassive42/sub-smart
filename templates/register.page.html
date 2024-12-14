@@ -6,6 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Register - sub-smart</title>
     <link rel="stylesheet" href="../static/css/auth.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .password-container {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+        .password-toggle:hover {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <div class="container card">
@@ -17,30 +34,32 @@
             <div class="input-box">
                 <label>Username</label>
                 {{ range .Errors.username }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="text" name="username" placeholder="Enter your username" required />
             </div>
             <div class="input-box">
                 <label>Email Address</label>
                 {{ range .Errors.email }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="email" name="email" placeholder="Enter your email" required />
             </div>
-            <div class="input-box">
+            <div class="input-box password-container">
                 <label>Password</label>
                 {{ range .Errors.password }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="password" name="password" placeholder="Enter your password" required />
+                <i style="padding-top: 20px;" class="fas fa-eye password-toggle" data-target="password"></i>
             </div>
-            <div class="input-box">
+            <div class="input-box password-container">
                 <label>Confirm Password</label>
                 {{ range .Errors.confirm }}
-                    <p class="error-text">{{.}}</p>
+                <p class="error-text">{{.}}</p>
                 {{ end }}
                 <input type="password" name="confirm" placeholder="Confirm your password" required />
+                <i style="padding-top: 20px;" class="fas fa-eye password-toggle" data-target="confirm"></i>
             </div>
             <button type="submit" class="btn">Create Account</button>
             <div class="register-link">
@@ -48,5 +67,29 @@
             </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetName = this.getAttribute('data-target');
+                    const passwordInput = document.querySelector(`input[name="${targetName}"]`);
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        this.classList.remove('fa-eye');
+                        this.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'text';
+                        passwordInput.type = 'password';
+                        this.classList.remove('fa-eye-slash');
+                        this.classList.add('fa-eye');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
