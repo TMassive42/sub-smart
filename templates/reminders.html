@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #e3f2fd, #f4f4f9);
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,46 +17,59 @@
         }
 
         .header {
-            background-color: #4caf50;
+            background: linear-gradient(to right, #4caf50, #81c784);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
             margin: 0;
+            font-size: 1.8rem;
         }
 
         .header a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1rem;
+            border: 2px solid #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .header a:hover {
-            text-decoration: underline;
+            background: #fff;
+            color: #4caf50;
         }
 
         .main-content {
             padding: 2rem;
             flex: 1;
             overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .reminders {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .reminders h2 {
-            text-align: center;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
         }
 
         .reminder-item {
@@ -64,25 +77,28 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #ddd;
-            padding: 0.5rem 0;
+            padding: 1rem 0;
+            transition: background 0.2s;
         }
 
-        .reminder-item:last-child {
-            border-bottom: none;
+        .reminder-item:hover {
+            background: #f9f9f9;
         }
 
         .reminder-details {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
         }
 
         .reminder-name {
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #333;
+            color: #4caf50;
         }
 
         .reminder-date {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
         }
 
@@ -92,11 +108,13 @@
         }
 
         .reminder-actions button {
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .btn-cancel {
@@ -114,22 +132,24 @@
             color: #fff;
         }
 
+        .reminder-actions button:hover {
+            transform: scale(1.05);
+        }
+
         .footer {
             text-align: center;
             padding: 1rem;
-            background-color: #3e2723;
+            background: #3e2723;
             color: #fff;
+            font-size: 0.9rem;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
             .reminder-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.5rem;
-            }
-
-            .reminder-details {
-                margin-bottom: 0.5rem;
+                gap: 1rem;
             }
         }
     </style>
@@ -148,7 +168,7 @@
             
             <div class="reminder-item">
                 <div class="reminder-details">
-                    <span class="reminder-name">Netflix</span>
+                    <span class="reminder-name">Netflix - Renewal</span>
                     <span class="reminder-date">Due Date: December 20, 2024</span>
                 </div>
                 <div class="reminder-actions">
@@ -160,7 +180,7 @@
 
             <div class="reminder-item">
                 <div class="reminder-details">
-                    <span class="reminder-name">Spotify</span>
+                    <span class="reminder-name">Spotify - Renewal</span>
                     <span class="reminder-date">Due Date: December 25, 2024</span>
                 </div>
                 <div class="reminder-actions">
@@ -172,7 +192,7 @@
 
             <div class="reminder-item">
                 <div class="reminder-details">
-                    <span class="reminder-name">Gym Membership</span>
+                    <span class="reminder-name">Gym Membership - Renewal</span>
                     <span class="reminder-date">Due Date: January 5, 2025</span>
                 </div>
                 <div class="reminder-actions">
